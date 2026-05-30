@@ -1,6 +1,9 @@
 // First Negative Integer In Every Window Of Size K
 // https://www.naukri.com/code360/problems/first-negative-integer-in-every-window-of-size-k_1164406?leftPanelTabValue=PROBLEM
 
+// Approach 2
+// TC: O(n) and SC: O(1)
+
 #include <iostream>
 #include <vector>
 
