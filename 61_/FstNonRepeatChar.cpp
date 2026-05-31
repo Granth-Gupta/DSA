@@ -1,34 +1,42 @@
 // First Non-Repeating charater in a stream
 
 #include <iostream>
-#include <string>
+#include <unordered_map>
+#include <queue>
+
 using namespace std;
 
-string firstNonRepeating(string A){
-    string ans = "";
-    int freq[26] = {0};
-    for(int i=0; i<A.size(); i++){
-        char ch = A[i];
-        freq[ch - 'a']++;
-        char firstNonRepeat = '#';
-        for(int j=0; j<26; j++){
-            if(freq[j] == 1){
-                firstNonRepeat = (char)(j + 'a');
-                break;
-            }
+void firstNonRepeatingChar(const string& str) {
+    unordered_map<char, int> charCount;
+    queue<char> nonRepeatingQueue;
+
+    for (char ch : str) {
+        // Increment the count of the character
+        charCount[ch]++;
+
+        // If it's the first occurrence, add it to the queue
+        if (charCount[ch] == 1) {
+            nonRepeatingQueue.push(ch);
         }
-        ans += firstNonRepeat;
+
+        // Remove characters from the front of the queue until we find a non-repeating character
+        while (!nonRepeatingQueue.empty() && charCount[nonRepeatingQueue.front()] > 1) {
+            nonRepeatingQueue.pop();
+        }
+
+        // Print the first non-repeating character or # if there isn't one
+        if (!nonRepeatingQueue.empty()) {
+            cout << nonRepeatingQueue.front() << " ";
+        } else {
+            cout  << "# ";
+        }
     }
-    return ans;
 }
 
-int main(){
-    
-    string A;
-    cout << "Enter the stream of characters: ";
-    cin >> A;
-    string result = firstNonRepeating(A);
-    cout << "First non-repeating characters in the stream: " << result << endl;
-
+int main() {
+    string input = "aabc";
+    cout << "First non-repeating characters in the stream: ";
+    firstNonRepeatingChar(input);
+    cout << endl;
     return 0;
 }
