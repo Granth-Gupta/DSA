@@ -8,7 +8,7 @@ using namespace std;
 
 void firstNonRepeatingChar(const string& str) {
     unordered_map<char, int> charCount;
-    queue<char> nonRepeatingQueue;
+    queue<char> q;
 
     for (char ch : str) {
         // Increment the count of the character
@@ -16,17 +16,17 @@ void firstNonRepeatingChar(const string& str) {
 
         // If it's the first occurrence, add it to the queue
         if (charCount[ch] == 1) {
-            nonRepeatingQueue.push(ch);
+            q.push(ch);
         }
 
         // Remove characters from the front of the queue until we find a non-repeating character
-        while (!nonRepeatingQueue.empty() && charCount[nonRepeatingQueue.front()] > 1) {
-            nonRepeatingQueue.pop();
+        while (!q.empty() && charCount[q.front()] > 1) {
+            q.pop();
         }
 
         // Print the first non-repeating character or # if there isn't one
-        if (!nonRepeatingQueue.empty()) {
-            cout << nonRepeatingQueue.front() << " ";
+        if (!q.empty()) {
+            cout << q.front() << " ";
         } else {
             cout  << "# ";
         }
