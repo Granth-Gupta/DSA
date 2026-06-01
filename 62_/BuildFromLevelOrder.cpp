@@ -16,7 +16,7 @@ class node{
         }
 };
 
-node* buildFromLevelOrder(node* root){
+void buildFromLevelOrder(node* &root){
     queue<node*> q;
 
     cout << "Enter data for root: " << endl;
@@ -48,14 +48,43 @@ node* buildFromLevelOrder(node* root){
             q.push(temp -> right);
         }
     }
+}
 
-    return root;
+void levelOrderTraversal(node* root){
+    queue<node*> q;
+    q.push(root);
+    q.push(NULL); // Seperator
+
+    while(!q.empty()){
+        node* temp = q.front();
+        q.pop();
+
+        if(temp == NULL){
+            cout << endl;
+            if(!q.empty()){
+                q.push(NULL);
+            }
+        }
+        else{
+            cout << temp -> data << " ";
+            
+            if(temp -> left){
+                q.push(temp -> left);
+            }
+
+            if(temp -> right){
+                q.push(temp -> right);
+            }
+        }
+    }
 }
 
 int main(){
     node* root = NULL;
-    root = buildFromLevelOrder(root);
-    // 1 3 7 -1 -1  11 -1 -1 5 17 -1 -1 -1
+    buildFromLevelOrder(root);
+    // 1 3 5 7 11 17 -1 -1 -1 -1 -1 -1 -1
+
+    levelOrderTraversal(root);
     
     return 0;
 }
