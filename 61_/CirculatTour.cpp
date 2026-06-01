@@ -1,4 +1,6 @@
 // Circular Tour - GFG
+// Using the concept of two pointers to find the starting point of the tour in O(n) time complexity.
+
 #include <bits/stdc++.h>
 
 using namespace std;
@@ -11,24 +13,21 @@ struct petrolPump {
 class Solution {
 public:
     int tour(petrolPump p[], int n) {
-        int start = 0, end = 1;
-        int curr_petrol = p[start].petrol - p[start].distance;
+        int deficit = 0;
+        int balance = 0;
+        int start = 0;
 
-        while (end != start || curr_petrol < 0) {
-            while (curr_petrol < 0 && start != end) {
-                curr_petrol -= p[start].petrol - p[start].distance;
-                start = (start + 1) % n;
+        for (int i = 0; i < n; i++) {
+            balance += p[i].petrol - p[i].distance;
 
-                if (start == 0) {
-                    return -1; // No solution
-                }
+            if (balance < 0) {
+                deficit += balance;
+                balance = 0;
+                start = i + 1;
             }
-
-            curr_petrol += p[end].petrol - p[end].distance;
-            end = (end + 1) % n;
         }
 
-        return start; // Starting point of the tour
+        return (balance + deficit >= 0) ? start : -1;
     }
 };
 
