@@ -39,7 +39,7 @@ pair<int, int> diameterfast(Node* root) {
 }
 
 int diameter(Node* root) {
-    return diameterfast(root).second;
+    return diameterfast(root).first;
 } 
 
 int main() {
