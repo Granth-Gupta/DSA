@@ -1,0 +1,55 @@
+// Diameter of a Binary Tree (edge wise not node wise) - GFG
+// Approach #2
+
+#include <iostream>
+using namespace std;
+
+struct Node
+{
+    int data;
+    Node *left;
+    Node *right;
+
+    Node(int val)
+    {
+        data = val;
+        left = NULL;
+        right = NULL;
+    }
+};
+
+pair<int, int> diameterfast(Node* root) {
+    if(root == NULL) {
+        pair<int, int> p = make_pair(0, 0);
+        return p;
+    }
+
+    pair<int, int> left = diameterfast(root->left);
+    pair<int, int> right = diameterfast(root->right);
+
+    int op1 = left.first;
+    int op2 = right.first;
+    int op3 = left.second + right.second;
+
+    pair<int, int> ans;
+    ans.first = max(op1, max(op2, op3));
+    ans.second = max(left.second, right.second) + 1;
+
+    return ans;
+}
+
+int diameter(Node* root) {
+    return diameterfast(root).second;
+} 
+
+int main() {
+    Node *root = new Node(1);
+    root->left = new Node(2);
+    root->right = new Node(3);
+    root->left->left = new Node(4);
+    root->left->right = new Node(5);
+
+    cout << "Diameter of Binary Tree: " << diameter(root) << endl;
+
+    return 0;
+}
