@@ -1,4 +1,4 @@
-// Height of Binary Tree
+// Height of Binary Tree (node wise not edge wise)
 
 #include <bits/stdc++.h>
 using namespace std;
