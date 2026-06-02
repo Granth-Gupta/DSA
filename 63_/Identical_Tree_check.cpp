@@ -1,6 +1,9 @@
 // Determine if two binary trees are identical. (GFG)
 // Two binary trees are considered identical if they are structurally identical and the nodes have the same value.
 
+// TC: O(n) where n is the number of nodes in the tree. We need to traverse both trees completely to check if they are identical.
+// SC: O(h) where h is the height of the tree. In the worst case, the height of the tree can be equal to the number of nodes (in case of a skewed tree), so the space complexity can be O(n) in the worst case. However, in a balanced tree, the height would be log(n), resulting in a space complexity of O(log(n)).
+
 #include <iostream>
 using namespace std;
 
