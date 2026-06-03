@@ -1,4 +1,6 @@
 // ZigZag Tree Traversal - GFG
+// TC: O(N) where N is the number of nodes in the tree
+// SC: O(N) for the queue and the result vector
 
 #include <iostream>
 #include <vector>
@@ -49,7 +51,7 @@ public:
             for(auto val : level){
                 ans.push_back(val);
             }
-            
+
             // ans.insert(ans.end(), level.begin(), level.end());
         }
         
