@@ -1,4 +1,6 @@
 // Boundary Traversal of a Binary Tree - GFG
+// TC: O(N) where N is the number of nodes in the tree
+// SC: O(N) for the result vector and the recursive call stack in the worst case
 
 #include <iostream>
 #include <vector>
