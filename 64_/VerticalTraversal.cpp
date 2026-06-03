@@ -1,4 +1,6 @@
 // Vertical Tree Traversal - GFG
+// TC: O(N) where N is the number of nodes in the tree
+// SC: O(N) for the map, queue, and result vector
 
 #include <iostream>
 #include <vector>
