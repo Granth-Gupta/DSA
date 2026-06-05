@@ -1,11 +1,16 @@
 #include <iostream>
+#include <map>
 using namespace std;
 
 int main(){
-    float a = 123456;
-    cout << "The value of a/64 is: " << a/64 << endl;
+    map<int, int> m;
+    m[0] = 1;
 
-    cout << "1929 * 64 = " << 1929 * 64 << endl;
+    if(m.find(0) == m.end()){
+        cout << "Not found" << endl;
+    } else {
+        cout << "Found" << endl;
+    }
 
     return 0;
 }
