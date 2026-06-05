@@ -1,8 +1,6 @@
-// Left View of Binary Tree - GFG
+// Left View of Binary Tree - GFG - Approach #2 (Recursion)
 // TC: O(N) where N is the number of nodes in the tree
-// SC: O(N) for the queue and result vector
-
-// Approach #2: We use recursion to traverse the tree. 
+// SC: O(H) where H is the height of the tree (due to recursion stack) + O(N) for the result vector
 
 #include <iostream>
 #include <vector>
