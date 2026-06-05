@@ -20,37 +20,48 @@ struct Node {
 };
 
 class Solution {
-    public:
-        // Function to return a list containing the vertical order traversal of the tree.
-        vector<int> verticalOrder(Node *root) {
-            vector<int> ans;
-            if(root == NULL) return ans;
+  public:
+    vector<vector<int>> verticalOrder(Node *root) {
+        vector<vector<int>> ans;
+        
+        // [HD][level] -> nodes list 
+        map<int, map<int, vector<int>>> nodes;
+        
+        // For Level order traversal with pair Node* and pair {HD,level}
+        queue<pair<Node*, pair<int,int>>> q;
+        
+        q.push(make_pair(root, make_pair(0,0)));
+        
+        while(!q.empty()){
+            pair<Node*, pair<int,int>> temp = q.front();
+            q.pop();
             
-            map<int, vector<int>> m; // Map to store nodes based on their horizontal distance
-            queue<pair<Node*, int>> q; // Queue to perform level order traversal
-            q.push({root, 0}); // Start with the root node at horizontal distance 0
+            Node* frontNode = temp.first;
+            int HD = temp.second.first;
+            int level = temp.second.second;
             
-            while(!q.empty()){
-                auto front = q.front();
-                q.pop();
-                Node* node = front.first;
-                int hd = front.second; // Horizontal distance
-                
-                m[hd].push_back(node->data); // Add the node's data to the corresponding horizontal distance
-                
-                if(node->left) q.push({node->left, hd - 1}); // Left child has horizontal distance -1
-                if(node->right) q.push({node->right, hd + 1}); // Right child has horizontal distance +1
+            nodes[HD][level].push_back(frontNode->data);
+            
+            if(frontNode->left){
+                q.push(make_pair(frontNode->left, make_pair(HD-1, level+1)));
             }
-            
-            // Traverse the map and add nodes to the answer vector in vertical order
-            for(auto it : m){
-                for(int val : it.second){
-                    ans.push_back(val);
-                }
+            if(frontNode->right){
+                q.push(make_pair(frontNode->right, make_pair(HD+1, level+1)));
             }
-            
-            return ans;
-        }  
+        }
+
+        // For ans like - [[4], [2], [1, 5, 6, 11], [3, 8, 9], [7], [10]]
+        
+        for(auto i : nodes){
+            vector<int> col;
+            for(auto j : i.second){
+                col.insert(col.end(), j.second.begin(), j.second.end());
+            }
+            ans.push_back(col);
+        }
+        
+        return ans;
+    }
 };
 
 int main() {
@@ -62,11 +73,14 @@ int main() {
     root->left->right = new Node(5);
     
     Solution sol;
-    vector<int> result = sol.verticalOrder(root);
-    
-    cout << "Vertical Order Traversal: ";
-    for(int val : result){
-        cout << val << " ";
+    vector<vector<int>> result = sol.verticalOrder(root);
+
+    cout << "Vertical Order Traversal: " << endl;
+    for (const auto& vec : result) {
+        for (int val : vec) {
+            cout << val << " ";
+        }
+        cout << endl;
     }
     
     return 0;
