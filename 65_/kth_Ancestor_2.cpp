@@ -19,19 +19,23 @@ struct Node {
 };
 
 class Solution {
-    void solve(Node* root, vector<int> &path, int node){
+    bool solve(Node* root, vector<int> &path, int node){
         if(root == NULL){
-            return;
+            return false;
         }
         
         path.push_back(root->data);
         
         if(root->data == node){
-            return;
+            return true;
         }
         
-        solve(root->left, path, node);
-        solve(root->right, path, node);
+        if(solve(root->left, path, node) || solve(root->right, path, node)) {
+            return true;
+        }
+        
+        path.pop_back();
+        return false;
     }
     
   public:
@@ -41,12 +45,10 @@ class Solution {
         
         int size = path.size();
         
-        // If k is greater than or equal to the size of the path, it means the kth ancestor does not exist
         if(k >= size){
             return -1;
         }
         
-        // The kth ancestor will be at index size - 1 - k in the path vector
         return path[size - 1 - k];
     }
 };
