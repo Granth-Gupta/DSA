@@ -1,4 +1,4 @@
-// Construct Tree from Inorder & Preorder - GFG
+// Construct Tree from Inorder & Postorder - GFG
 // TC: O(N) + O(N) + O(N) ~ O(N)
 // SC: O(N) + O(N) ~ O(N)
 
@@ -22,29 +22,29 @@ class Solution {
         }
     }
     
-    Node* solve(vector<int> &inorder, vector<int> &preorder, int &index, int inorderStart, 
+    Node* solve(vector<int> &inorder, vector<int> &postorder, int &index, int inorderStart, 
     int inorderEnd, int n, map<int,int> &nodeToIndex)
     {
-        if(index >= n || inorderStart > inorderEnd)
+        if(index < 0 || inorderStart > inorderEnd)
             return NULL;
         
-        int element = preorder[index++];
+        int element = postorder[index--];
         Node* root = new Node(element);
         int position = nodeToIndex[element];
         
-        root->left = solve(inorder, preorder, index, inorderStart, position-1, n, nodeToIndex);
-        root->right = solve(inorder, preorder, index, position+1, inorderEnd, n, nodeToIndex);
+        root->right = solve(inorder, postorder, index, position+1, inorderEnd, n, nodeToIndex);
+        root->left = solve(inorder, postorder, index, inorderStart, position-1, n, nodeToIndex);
         
         return root;
     }
   public:
-    Node *buildTree(vector<int> &inorder, vector<int> &preorder) {
-        int preOrderIndex = 0;
+    Node *buildTree(vector<int> &inorder, vector<int> &postorder) {
         int n = inorder.size();
+        int postOrderIndex = n-1;
         map<int,int> nodeToIndex;
         createMapping(inorder, nodeToIndex, n);
         
-        Node* ans = solve(inorder, preorder, preOrderIndex, 0, n-1, n, nodeToIndex);
+        Node* ans = solve(inorder, postorder, postOrderIndex, 0, n-1, n, nodeToIndex);
         return ans;
     }
 };
@@ -58,12 +58,12 @@ void printPostOrder(Node* &node) {
 
 int main() {
     vector<int> inorder = {1, 6, 8, 7};
-    vector<int> preorder = {1, 6, 7, 8};
+    vector<int> postorder = {1, 8, 7, 6};
 
-    Solution solution;
-    Node* root = solution.buildTree(inorder, preorder);
+    Solution sol;
+    Node* root = sol.buildTree(inorder, postorder);
 
-    cout << "PostOrder of constructed tree: ";
+    cout << "Postorder of the constructed tree: ";
     printPostOrder(root);
     cout << endl;
 
