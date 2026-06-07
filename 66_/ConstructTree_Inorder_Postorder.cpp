@@ -1,5 +1,5 @@
 // Construct Tree from Inorder & Postorder - GFG
-// TC: O(N) + O(N) + O(N) ~ O(N)
+// TC: O(N) + O(NlogN) + O(N) ~ O(NlogN)
 // SC: O(N) + O(N) ~ O(N)
 
 #include <iostream>
@@ -49,11 +49,11 @@ class Solution {
     }
 };
 
-void printPostOrder(Node* &node) {
+void printPreOrder(Node* &node) {
     if (node == nullptr) return;
-    printPostOrder(node->left);
-    printPostOrder(node->right);
     cout << node->data << " ";
+    printPreOrder(node->left);
+    printPreOrder(node->right);
 };
 
 int main() {
@@ -63,8 +63,8 @@ int main() {
     Solution sol;
     Node* root = sol.buildTree(inorder, postorder);
 
-    cout << "Postorder of the constructed tree: ";
-    printPostOrder(root);
+    cout << "Preorder of the constructed tree: ";
+    printPreOrder(root);
     cout << endl;
 
     return 0;
