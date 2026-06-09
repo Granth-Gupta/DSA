@@ -13,15 +13,6 @@ struct TreeNode {
 };
 
 class Solution {
-    TreeNode* findPredecessor(TreeNode* current){
-        TreeNode* pred = current->left;
-
-        while(pred->right != NULL && pred->right != current){
-            pred = pred->right;
-        }
-
-        return pred;
-    }
 public:
     vector<int> preorderTraversal(TreeNode* root) {
         vector<int> ans;
@@ -37,7 +28,10 @@ public:
                 current = current->right;
             }
             else{
-                TreeNode* predecessor = findPredecessor(current);
+                TreeNode* predecessor = current->left;
+                while (predecessor->right != NULL && predecessor->right != current) {
+                    predecessor = predecessor->right;
+                }
 
                 if(predecessor->right == NULL){
                     predecessor->right = current;
