@@ -1,4 +1,4 @@
-// Binary Search Tree implementation in C++
+// Binary Search Tree implementation in C++ (Inorder)
 
 #include <iostream>
 using namespace std;
