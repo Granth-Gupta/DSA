@@ -1,4 +1,4 @@
-// Flatten binary tree to linked list - GFG 
+// Flatten binary tree to linked list - GFG (Morris Traversal Preorder)
 
 // According to question
 // TC: O(N) SC: O(1)
@@ -14,9 +14,9 @@ class Node{
     Node* right;
 
     Node(int val){
-        data = val;
-        left = NULL;
-        right = NULL;
+        this->data = val;
+        this->left = NULL;
+        this->right = NULL;
     }
 };
 
