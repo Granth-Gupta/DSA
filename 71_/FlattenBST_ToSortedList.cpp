@@ -1,4 +1,5 @@
 // Flatten BST to sorted list - CN {TC: O(n) SC: O(n)}
+// Using Morris Traversal - TC: O(n) SC: O(1)
 
 #include <bits/stdc++.h>
 using namespace std;
