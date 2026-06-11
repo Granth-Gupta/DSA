@@ -30,13 +30,13 @@ public:
     }
 };
 
-Info largestBST(Node* root) {
+Info largestBST_(Node* root) {
     if (root == NULL) {
         return Info();
     }
 
-    Info leftInfo = largestBST(root->left);
-    Info rightInfo = largestBST(root->right);
+    Info leftInfo = largestBST_(root->left);
+    Info rightInfo = largestBST_(root->right);
 
     Info currInfo;
     currInfo.size = 1 + leftInfo.size + rightInfo.size;
@@ -53,6 +53,10 @@ Info largestBST(Node* root) {
     return currInfo;
 }
 
+int largestBST(Node* root) {
+    return largestBST_(root).size;
+}
+
 int main() {
     Node* root = new Node(5);
     root->left = new Node(2);
@@ -60,8 +64,8 @@ int main() {
     root->left->left = new Node(1);
     root->left->right = new Node(3);
 
-    Info result = largestBST(root);
-    cout << "Size of the largest BST is: " << result.size << endl;
+    int result = largestBST(root);
+    cout << "Size of the largest BST is: " << result << endl;
 
     return 0;
 }
