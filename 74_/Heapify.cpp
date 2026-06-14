@@ -24,6 +24,7 @@ void heapify(int arr[], int n, int i){
 }
 
 void buildHeap(int arr[], int n){
+    // TC: O(n) - We start from the last non-leaf node and heapify each node up to the root node
     for(int i = n / 2 - 1; i >= 0; i--){
         heapify(arr, n, i);
     }
