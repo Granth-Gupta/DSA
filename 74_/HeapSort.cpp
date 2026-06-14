@@ -1,4 +1,4 @@
-// Heap sort - TC: O(n log n) - Space Complexity: O(1)
+// Heap sort - TC: O(n log n) - Space Complexity: O(1) - 1-based indexing
 
 #include <iostream>
 using namespace std;
@@ -24,13 +24,13 @@ void heapify(int arr[], int n, int i){
     }
 }
 
-void buildHeap(int arr[], int n){
+void heapSort(int arr[], int n){
+    // Build Max Heap
     for(int i = n / 2; i >= 1; i--){
         heapify(arr, n, i);
     }
-}
 
-void heapSort(int arr[], int n){
+    // One by one extract elements from heap
     while(n > 1){
         swap(arr[1], arr[n]);
         n--;
@@ -42,7 +42,6 @@ int main(){
     int arr[] = {-1, 5, 4, 3, 2, 1}; // 1-based indexing
     int n = sizeof(arr) / sizeof(arr[0]) - 1; // Exclude the first element
 
-    buildHeap(arr, n);
     heapSort(arr, n);
 
     cout << "Sorted array: ";
