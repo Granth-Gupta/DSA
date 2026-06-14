@@ -57,6 +57,13 @@ class heap{
         }
     }
    }
+
+   void print(){
+        for(int i = 1; i <= size; i++){
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
 };
 
 int main(){
@@ -70,18 +77,12 @@ int main(){
     h.insert(54);
 
     cout << "Before deletion: ";
-    for(int i = 1; i <= h.size; i++){
-        cout << h.arr[i] << " ";
-    }
-    cout << endl;
+    h.print();
 
     h.deleteFromHeap();
 
     cout << "After deletion: ";
-    for(int i = 1; i <= h.size; i++){
-        cout << h.arr[i] << " ";
-    }
-    cout << endl;
+    h.print();
 
     return 0;
 }
