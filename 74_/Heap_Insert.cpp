@@ -1,4 +1,5 @@
-// Inseartt an element into a heap (Max Heap) 
+// Inseartt an element into a heap (Max Heap)
+// Time Complexity: O(log n) where n is the number of elements in the heap
 
 #include <iostream>
 using namespace std;
