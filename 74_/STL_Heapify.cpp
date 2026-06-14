@@ -26,6 +26,8 @@ int main(){
     minHeap.push(4);
     minHeap.push(5);
 
+    cout << "Size : " << minHeap.size() << endl;
+
     cout << "Min Heap top element: " << minHeap.top() << endl; // 1
 
     return 0;
