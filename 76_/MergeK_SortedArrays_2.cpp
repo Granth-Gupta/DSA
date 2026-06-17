@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#include <bits/stdc++.h> 
 vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k){
     
         vector<int> mergedArray;
