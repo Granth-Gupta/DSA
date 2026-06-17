@@ -14,11 +14,17 @@ int getKthLargest(vector<int> &arr, int k)
         for (int j = i; j < n; j++)
         {
             sum += arr[j];
-            minHeap.push(sum);
 
-            if (minHeap.size() > k)
+            if (minHeap.size() < k)
             {
-                minHeap.pop();
+                minHeap.push(sum);  
+            }
+            else {
+                if (sum > minHeap.top())
+                {
+                    minHeap.pop();
+                    minHeap.push(sum);
+                }
             }
         }
     }
