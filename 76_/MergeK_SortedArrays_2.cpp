@@ -3,37 +3,33 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> mergeKSortedArrays(vector<vector<int>> &arrays)
-{
-    vector<int> mergedArray;
-    priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> minHeap;
-
-    for (int i = 0; i < arrays.size(); i++)
-    {
-        if (!arrays[i].empty())
-        {
-            minHeap.push({arrays[i][0], {i, 0}});
+#include <bits/stdc++.h> 
+vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k){
+    
+        vector<int> mergedArray;
+        priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, greater<pair<int, pair<int, int>>>> minHeap;
+    
+        for(int i=0; i<k; i++){
+            if(!kArrays[i].empty()){
+                minHeap.push({kArrays[i][0], {i, 0}});
+            }
         }
-    }
-
-    while (!minHeap.empty())
-    {
-        auto top = minHeap.top();
-        minHeap.pop();
-
-        int value = top.first;
-        int arrayIndex = top.second.first;
-        int elementIndex = top.second.second;
-
-        mergedArray.push_back(value);
-
-        if (elementIndex + 1 < arrays[arrayIndex].size())
-        {
-            minHeap.push({arrays[arrayIndex][elementIndex + 1], {arrayIndex, elementIndex + 1}});
+    
+        while(!minHeap.empty()){
+            auto top = minHeap.top();
+            minHeap.pop();
+            int value = top.first;
+            int arrayIndex = top.second.first;
+            int elementIndex = top.second.second;
+    
+            mergedArray.push_back(value);
+    
+            if(elementIndex + 1 < kArrays[arrayIndex].size()){
+                minHeap.push({kArrays[arrayIndex][elementIndex + 1], {arrayIndex, elementIndex + 1}});
+            }
         }
-    }
-
-    return mergedArray;
+    
+        return mergedArray;
 }
 
 int main(){

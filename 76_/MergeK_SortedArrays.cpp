@@ -3,17 +3,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-vector<int> mergeKSortedArrays(vector<vector<int>> &arrays)
-{
+vector<int> mergeKSortedArrays(vector<vector<int>>&kArrays, int k){
     vector<int> mergedArray;
-
-    for (const auto &arr : arrays)
-    {
-        mergedArray.insert(mergedArray.end(), arr.begin(), arr.end());
+    for(int i=0; i<k; i++){
+        for(int j=0; j<kArrays[i].size(); j++){
+            mergedArray.push_back(kArrays[i][j]);
+        }
     }
-
     sort(mergedArray.begin(), mergedArray.end());
-
     return mergedArray;
 }
 
