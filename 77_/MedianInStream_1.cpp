@@ -6,14 +6,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void insertionSort(vector<int> &stream, int val){
-    stream.push_back(val);
-    int i = stream.size() - 2;
+void insertionSort(vector<int> &stream, int key, int n){
+    stream.push_back(key);
+    int j = n - 2;
 
-    while(i >= 0 && stream[i] > val){
-        swap(stream[i], stream[i + 1]);
-        i--;
+    while(j >= 0 && stream[j] > key){
+        stream[j + 1] = stream[j];
+        j--;
     }
+    stream[j + 1] = key;
 }
 
 vector<int> findMedian(vector<int> &arr, int n){
@@ -21,7 +22,7 @@ vector<int> findMedian(vector<int> &arr, int n){
     vector<int> stream;
 
     for(int i = 0; i < n; i++){
-        insertionSort(stream, arr[i]);
+        insertionSort(stream, arr[i], i+1);
 
         if(stream.size() % 2 == 0){
             medians.push_back((stream[stream.size()/2] + stream[stream.size()/2 - 1]) / 2);
