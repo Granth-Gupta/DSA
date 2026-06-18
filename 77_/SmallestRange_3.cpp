@@ -44,7 +44,7 @@ int kSorted(vector<vector<int>> &a, int k, int n) {
         if (currentRange < minRange) {
             minRange = currentRange;
         }
-
+        
         // If there is a next element in the same list, add it to the heap
         if (minNode.col + 1 < n) {
             int nextVal = a[minNode.row][minNode.col + 1];
