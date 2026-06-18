@@ -1,4 +1,4 @@
-// Merge K Sorted Lists - Approach 2: Using Min Heap (Priority Queue)
+// Merge K Sorted Lists - Approach 2: Using Min Heap (Priority Queue) - TC: O(N log K), SC: O(K)
 
 #include <bits/stdc++.h>
 using namespace std;
