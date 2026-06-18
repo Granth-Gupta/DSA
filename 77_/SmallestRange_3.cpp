@@ -7,49 +7,53 @@
 
 using namespace std;
 
+class Node {
+public:
+    int val;
+    int row;
+    int col;
+
+    Node(int v, int r, int c) : val(v), row(r), col(c) {}
+};
+
 class Compare {
 public:
-    bool operator()(const pair<int, pair<int, int>>& a, const pair<int, pair<int, int>>& b) {
-        return a.first > b.first;
+    bool operator()( Node &a, Node &b) {
+        return a.val > b.val; 
     }
 };
 
 int kSorted(vector<vector<int>> &a, int k, int n) {
-    priority_queue<pair<int, pair<int, int>>, vector<pair<int, pair<int, int>>>, Compare> minHeap;
-
+    priority_queue<Node, vector<Node>, Compare> minHeap;
     int maxVal = INT_MIN;
     int minRange = INT_MAX;
 
     // Step 1: Initialize the min heap with the first element of each list
     for (int i = 0; i < k; i++) {
-        minHeap.push({a[i][0], {i, 0}});
+        minHeap.push(Node(a[i][0], i, 0));
         maxVal = max(maxVal, a[i][0]);
     }
 
-    // Step 2: Extract the minimum element and push the next element from the same list
-
-    while (true) {
-        auto minElement = minHeap.top();
+    // Step 2: Extract the minimum element and add the next element from the same list
+    while (!minHeap.empty()) {
+        Node minNode = minHeap.top();
         minHeap.pop();
 
-        int minVal = minElement.first;
-        int row = minElement.second.first;
-        int col = minElement.second.second;
-
-        // Update the range if it's smaller than the current minimum range
-        if (maxVal - minVal < minRange) {
-            minRange = maxVal - minVal;
+        // Update the range if the current range is smaller
+        int currentRange = maxVal - minNode.val;
+        if (currentRange < minRange) {
+            minRange = currentRange;
         }
 
-        // If we have reached the end of one of the lists, we cannot find a smaller range
-        if (col + 1 == n) {
+        // If there is a next element in the same list, add it to the heap
+        if (minNode.col + 1 < n) {
+            int nextVal = a[minNode.row][minNode.col + 1];
+            minHeap.push(Node(nextVal, minNode.row, minNode.col + 1));
+            maxVal = max(maxVal, nextVal);
+        } else {
+            // If we have exhausted one of the lists, we can stop
             break;
         }
-
-        // Push the next element from the same list into the heap
-        int nextVal = a[row][col + 1];
-        minHeap.push({nextVal, {row, col + 1}});
-        maxVal = max(maxVal, nextVal);
     }
 
     return minRange;
