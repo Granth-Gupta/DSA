@@ -1,40 +1,49 @@
-// Smallest range from k Sorted Lists - CN - Approach 1 - Using Brute Force {TC: O(n^k) SC: O(k)}
+// Smallest range from k Sorted Lists - CN - Approach 1 - Using Brute Force {TC: O(n^2 * k^2), SC: O(1)}
 
 #include <iostream>
 #include <vector>
 #include <climits>
 #include <algorithm>
-
 using namespace std;
-
-// Helper function to find all combinations using recursion
-void findSmallestRange(vector<vector<int>> &a, int k, int n, int listIdx, vector<int> &currentCombination, int &minRange) {
-    // Base Case: If we have picked one element from all k lists
-    if (listIdx == k) {
-        int minVal = INT_MAX;
-        int maxVal = INT_MIN;
-        
-        for (int val : currentCombination) {
-            minVal = min(minVal, val);
-            maxVal = max(maxVal, val);
-        }
-        
-        minRange = min(minRange, maxVal - minVal);
-        return;
-    }
-
-    // Try picking every element from the current list
-    for (int i = 0; i < n; i++) {
-        currentCombination.push_back(a[listIdx][i]);
-        findSmallestRange(a, k, n, listIdx + 1, currentCombination, minRange);
-        currentCombination.pop_back(); // Backtrack
-    }
-}
 
 int kSorted(vector<vector<int>> &a, int k, int n) {
     int minRange = INT_MAX;
-    vector<int> currentCombination;
-    findSmallestRange(a, k, n, 0, currentCombination, minRange);
+
+    // Step 1: Pick every single element as a potential minVal -> O(n * k)
+    for (int i = 0; i < k; i++) {
+        for (int j = 0; j < n; j++) {
+            int minVal = a[i][j];
+            int maxVal = INT_MIN;
+            bool isValid = true;
+
+            // Step 2: For this minVal, find the required maxVal by scanning all k lists -> O(k * n)
+            for (int l = 0; l < k; l++) {
+                int firstValidElement = -1;
+                
+                // Linear scan inside the list to find the first element >= minVal
+                for (int m = 0; m < n; m++) {
+                    if (a[l][m] >= minVal) {
+                        firstValidElement = a[l][m];
+                        break;
+                    }
+                }
+
+                // If a list doesn't have any element >= minVal, this minVal cannot form a valid range
+                if (firstValidElement == -1) {
+                    isValid = false;
+                    break;
+                }
+
+                // The overall maxVal for this range will be the maximum of these first valid elements
+                maxVal = max(maxVal, firstValidElement);
+            }
+
+            // If valid, calculate the range
+            if (isValid) {
+                minRange = min(minRange, maxVal - minVal);
+            }
+        }
+    }
     return minRange;
 }
 
@@ -43,7 +52,6 @@ int main() {
     int k = a.size();
     int n = a[0].size();
     
-    // Correct Output for this test case: 2 (from elements [7, 8, 6] -> range is 8 - 6 = 2)
-    cout << "Smallest Range: " << kSorted(a, k, n) << endl; 
+    cout << "Smallest Range: " << kSorted(a, k, n) << endl; // Output: 2
     return 0;
 }
