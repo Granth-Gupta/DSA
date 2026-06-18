@@ -29,6 +29,8 @@ class compare{
 int main(){
     priority_queue<Node*, vector<Node*>, compare> minHeap;
 
+    // greater<dataType> is a built-in comparator that can be used to create a min heap for primitive data types like int, float, etc.
+
     Node* n1 = new Node(10, 0, 0);
     Node* n2 = new Node(5, 1, 0);
     Node* n3 = new Node(20, 2, 0);
