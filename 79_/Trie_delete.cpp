@@ -66,26 +66,27 @@ class Trie{
             return searchUtils(root, word);
         }
 
-        void deleteUtil(TrieNode* root, string word){
-            if(word.length() == 0){
+        void deleteUtil(TrieNode* root, string word, int pos){
+            if(pos == word.length()){
                 root->isTerminal = false;
                 return;
             }
 
-            int index = word[0] - 'A';
+            int index = word[pos] - 'A';
             TrieNode* child = root->children[index];
 
             if(child == NULL)
                 return;
 
-            deleteUtil(child, word.substr(1));
+            // deleteUtil(child, word.substr(1));
+            deleteUtil(child, word, pos + 1);
         }
 
         void deleteWord(string word){
            bool isPresent = searchWord(word);
 
             if(isPresent){
-                deleteUtil(root, word);
+                deleteUtil(root, word, 0);
                 cout << "Word " << word << " deleted" << endl;
             }
             else{
