@@ -1,4 +1,5 @@
 // Trie Search
+// TC - O(length of word)
 
 #include <iostream>
 using namespace std;
