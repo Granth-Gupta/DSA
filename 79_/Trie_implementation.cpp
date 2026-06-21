@@ -58,7 +58,7 @@ class Trie{
 int main(){
     Trie* T = new Trie();
 
-    T->insertWord("Hello");
+    T->insertWord("HELLO");
 
     return 0;
 }
