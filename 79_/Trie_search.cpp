@@ -1,4 +1,4 @@
-// Trie Implementation
+// Trie Search
 
 #include <iostream>
 using namespace std;
