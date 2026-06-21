@@ -1,4 +1,4 @@
-// Hashmap basics
+// Hashmap basics - unordered_map
 // Insertion, deletion, and searching in a hashmap - TC: O(1) on average, O(n) in worst case
 
 #include <iostream>
