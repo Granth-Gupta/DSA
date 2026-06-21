@@ -1,4 +1,4 @@
-// Trie Implementation
+// Trie Implementation (Insert)
 
 #include <iostream>
 using namespace std;
