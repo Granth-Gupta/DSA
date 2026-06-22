@@ -3,101 +3,121 @@
 #include <iostream>
 using namespace std;
 
-class TrieNode{
-    public:
-        char data;
-        TrieNode* children[26];
-        bool isTerminal;
+class TrieNode
+{
+public:
+    char data;
+    TrieNode *children[26];
+    bool isTerminal;
 
-        TrieNode(char ch){
-            data = ch;
-            for(int i = 0; i < 26; i++){
-                children[i] = NULL;
-            }
-            isTerminal = false;
+    TrieNode(char ch)
+    {
+        data = ch;
+        for (int i = 0; i < 26; i++)
+        {
+            children[i] = NULL;
         }
+        isTerminal = false;
+    }
 };
 
-class Trie{
-    public:
-        TrieNode* root;
+class Trie
+{
+public:
+    TrieNode *root;
 
-        Trie(){
-            root = new TrieNode('\0');
+    Trie()
+    {
+        root = new TrieNode('\0');
+    }
+
+    void insertUtil(TrieNode *root, string word)
+    {
+        if (word.length() == 0)
+        {
+            root->isTerminal = true;
+            return;
         }
 
-        void insertUtil(TrieNode* root, string word){
-            if(word.length() == 0){
-                root->isTerminal = true;
-                return;
-            }
+        int index = word[0] - 'A';
+        TrieNode *child;
 
-            int index = word[0] - 'A';
-            TrieNode* child;
+        if (root->children[index] != NULL)
+        {
+            child = root->children[index];
+        }
+        else
+        {
+            child = new TrieNode(word[0]);
+            root->children[index] = child;
+        }
+        insertUtil(child, word.substr(1));
+    }
 
-            if(root->children[index] != NULL){
-                child = root->children[index];
-            }else{
-                child = new TrieNode(word[0]);
-                root->children[index] = child;
-            }
-            insertUtil(child, word.substr(1));
+    void insertWord(string word)
+    {
+        insertUtil(root, word);
+    }
+
+    bool searchUtils(TrieNode *root, string word)
+    {
+        if (word.length() == 0)
+        {
+            return root->isTerminal;
+        }
+        int index = word[0] - 'A';
+        TrieNode *child;
+
+        if (root->children[index] != NULL)
+            child = root->children[index];
+        else
+            return false;
+
+        return searchUtils(child, word.substr(1));
+    }
+    bool searchWord(string word)
+    {
+        return searchUtils(root, word);
+    }
+
+    void deleteUtil(TrieNode *root, string word, int pos)
+    {
+        if (pos == word.length())
+        {
+            root->isTerminal = false;
+            return;
         }
 
-        void insertWord(string word){
-            insertUtil(root, word);
+        int index = word[pos] - 'A';
+        TrieNode *child = root->children[index];
+
+        if (child == NULL)
+            return;
+
+        // deleteUtil(child, word.substr(1));
+        deleteUtil(child, word, pos + 1);
+    }
+
+    void deleteWord(string word)
+    {
+        bool isPresent = searchWord(word);
+
+        if (isPresent)
+        {
+            deleteUtil(root, word, 0);
+            cout << "Word " << word << " deleted" << endl;
         }
-
-        bool searchUtils(TrieNode* root, string word){
-            if(word.length() == 0){
-                return root->isTerminal;
-            }
-            int index = word[0] - 'A';
-            TrieNode* child;
-
-            if(root->children[index] != NULL)
-                child = root->children[index];
-            else
-                return false;
-
-            return searchUtils(child, word.substr(1));
+        else
+        {
+            cout << "Word " << word << " not present" << endl;
+            return;
         }
-        bool searchWord(string word){
-            return searchUtils(root, word);
-        }
-
-        void deleteUtil(TrieNode* root, string word, int pos){
-            if(pos == word.length()){
-                root->isTerminal = false;
-                return;
-            }
-
-            int index = word[pos] - 'A';
-            TrieNode* child = root->children[index];
-
-            if(child == NULL)
-                return;
-
-            // deleteUtil(child, word.substr(1));
-            deleteUtil(child, word, pos + 1);
-        }
-
-        void deleteWord(string word){
-           bool isPresent = searchWord(word);
-
-            if(isPresent){
-                deleteUtil(root, word, 0);
-                cout << "Word " << word << " deleted" << endl;
-            }
-            else{
-                cout << "Word " << word << " not present" << endl;
-                return;
-            }
-        }
+    }
 };
 
-int main(){
-    Trie* T = new Trie();
+int main()
+{
+    Trie *T = new Trie();
 
     T->insertWord("Hello");
     T->insertWord("Do");
