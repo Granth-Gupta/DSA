@@ -15,12 +15,13 @@ public:
     TrieNode(char ch)
     {
         data = ch;
+        isTerminal = false;
+        childCount = 0;
+
         for (int i = 0; i < 26; i++)
         {
             children[i] = NULL;
         }
-        isTerminal = false;
-        childCount = 0;
     }
 };
 
@@ -34,15 +35,15 @@ public:
         root = new TrieNode(ch);
     }
 
-    void insertUtil(TrieNode *root, string word)
+    void insertUtil(TrieNode *root, const string &word, int pos)
     {
-        if (word.length() == 0)
+        if (pos == word.length())
         {
             root->isTerminal = true;
             return;
         }
 
-        int index = word[0] - 'a';
+        int index = word[pos] - 'a';
         TrieNode *child;
 
         if (root->children[index] != NULL)
@@ -51,34 +52,40 @@ public:
         }
         else
         {
-            child = new TrieNode(word[0]);
-            root->childCount++;
+            child = new TrieNode(word[pos]);
             root->children[index] = child;
+            root->childCount++;
         }
-        insertUtil(child, word.substr(1));
+
+        insertUtil(child, word, pos + 1);
     }
 
-    void insertWord(string word)
+    void insertWord(const string &word)
     {
-        insertUtil(root, word);
+        insertUtil(root, word, 0);
     }
 
-    void lcp(string str, string &ans)
+    void lcp(const string &str, string &ans)
     {
-        for (int i = 0; i < str.size(); i++)
+        TrieNode *curr = root;
+
+        for (int i = 0; i < str.length(); i++)
         {
             char ch = str[i];
 
-            if (root->childCount == 1)
+            if (curr->childCount == 1)
             {
                 ans.push_back(ch);
+
                 int index = ch - 'a';
-                root = root->children[index];
+                curr = curr->children[index];
             }
             else
+            {
                 break;
+            }
 
-            if (root->isTerminal)
+            if (curr->isTerminal)
                 break;
         }
     }
@@ -86,9 +93,12 @@ public:
 
 string longestCommonPrefix(vector<string> &arr, int n)
 {
+    if (n == 0)
+        return "";
+
     Trie *T = new Trie('\0');
 
-    for (int i = 0; i < arr.size(); i++)
+    for (int i = 0; i < n; i++)
     {
         T->insertWord(arr[i]);
     }
@@ -97,6 +107,8 @@ string longestCommonPrefix(vector<string> &arr, int n)
     string ans = "";
 
     T->lcp(first, ans);
+
+    delete T;
 
     return ans;
 }
