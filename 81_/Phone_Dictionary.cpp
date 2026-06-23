@@ -1,5 +1,8 @@
 // Implement a phone Dictionary - CN
 
+// TC -> O(N * M^2)
+// SC -> O(N * M)
+
 #include <bits/stdc++.h>
 using namespace std;
 
