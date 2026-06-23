@@ -3,6 +3,9 @@
 #include <string>
 using namespace std;
 
+// TC -> O(4 ^ (n^2))
+// SC -> O(n^2)
+
 // Function to check if the next move is valid
 bool isSafe(int x, int y, int n, vector<vector<int>> &maze, vector<vector<int>> &visited)
 {
