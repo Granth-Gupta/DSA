@@ -1,4 +1,5 @@
 // Depth First Search (DFS Traversal) - CN
+// TC and SC -> Linear i.e., O(V + E)
 
 #include <bits/stdc++.h>
 using namespace std;
