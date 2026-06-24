@@ -1,5 +1,8 @@
 // BFS in Graph - CN (Only include nodes which can be reached from 0)
 
+// TC -> O(N + E)
+// SC -> O(N + E)
+
 #include <bits/stdc++.h>
 using namespace std;
 
