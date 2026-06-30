@@ -2,6 +2,17 @@
 // TC = O(E (V + E))
 // SC = O(V + E)
 
+/*
+Steps
+
+1. Count the initial connected components of the graph.
+2. Iterate through every single edge in the graph.
+3. Temporarily remove the edge from the graph.
+4. Recount the connected components using a standard DFS traversal.
+5. If the number of components increases, that edge is a bridge.
+6. Restore the edge and repeat for the next one.
+*/
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
