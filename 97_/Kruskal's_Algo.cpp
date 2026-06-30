@@ -1,5 +1,8 @@
 // Kruskal's Algorithm - CN
 
+// TC - O(E logE) or O(E logV)
+// SC - O(E)
+
 #include <iostream>
 #include <vector>
 #include <algorithm>
