@@ -4,6 +4,8 @@
 
 using namespace std;
 
+// findParent , unionSet -> TC: O(alpha V) ~ O(4) ~ O(1)
+
 // Initializes the parent and rank arrays
 void makeSet(vector<int> &parent, vector<int> &rank, int n)
 {
