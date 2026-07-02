@@ -1,5 +1,8 @@
 // Bridge - DFS Approach - O(V + E)
 
+// TC = O(V + E)
+// SC = O(V + E)
+
 #include <iostream>
 #include <vector>
 #include <unordered_map>
