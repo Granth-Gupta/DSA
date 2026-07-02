@@ -17,7 +17,7 @@ void dfs(int node, int parent, int &timer, vector<int> &disc, vector<int> &low,
 
     vis[node] = true;
     disc[node] = low[node] = timer++;
-    int childCount = 0; // Tracks children in the DFS tree (crucial for root node)
+    int childCount = 0;
 
     for (auto nbr : adj[node])
     {
