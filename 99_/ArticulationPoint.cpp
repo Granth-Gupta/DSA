@@ -1,6 +1,7 @@
 // Articulation Point in a Graph using DFS (Tarjan's Algorithm)
 
 // TC: O(V + E), SC: O(V + E) for adjacency list + O(V) for disc, low, vis, isArticulation arrays
+// Tarjan's Algorithm can also be used to find bridges in a graph, which are edges that, if removed, increase the number of connected components in the graph.
 
 #include <iostream>
 #include <vector>
