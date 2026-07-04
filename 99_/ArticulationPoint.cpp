@@ -56,7 +56,6 @@ void dfs(int node, int parent, int &timer, vector<int> &disc, vector<int> &low,
     }
 }
 
-// Main algorithm function
 vector<int> findArticulationPoints(vector<vector<int>> &edges, int v, int e)
 {
     unordered_map<int, list<int>> adj;
@@ -100,7 +99,6 @@ vector<int> findArticulationPoints(vector<vector<int>> &edges, int v, int e)
     return ans;
 }
 
-// Driver main function
 int main()
 {
     int v = 5;
