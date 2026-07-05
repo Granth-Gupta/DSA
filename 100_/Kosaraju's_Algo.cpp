@@ -1,5 +1,8 @@
 // Kosaraju's Algorithm for finding Strongly Connected Components (SCCs) in a directed graph
 
+// TC: O(V + E), where V is the number of vertices and E is the number of edges in the graph
+// SC: O(V), for storing the visited array and the stack
+
 #include <bits/stdc++.h>
 using namespace std;
 
