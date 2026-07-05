@@ -8,7 +8,7 @@ using namespace std;
 
 class Graph
 {
-    int V; // Number of vertices
+    int V;
     vector<vector<int>> adj;
 
 public:
