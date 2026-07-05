@@ -8,8 +8,8 @@ using namespace std;
 
 class Graph
 {
-    int V;                   // Number of vertices
-    vector<vector<int>> adj; // Adjacency list representation of the graph
+    int V; // Number of vertices
+    vector<vector<int>> adj;
 
 public:
     Graph(int V)
