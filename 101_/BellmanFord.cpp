@@ -1,4 +1,4 @@
-// Bellman Ford Algorithm - For Shortest distance b/w two nodes in a graph with negative weights
+// Bellmon Ford Algorithm - For Shortest distance b/w two nodes in a graph with negative weights
 // Time Complexity: O(n*m) where n is the number of vertices and m is the number of edges
 
 #include <iostream>
