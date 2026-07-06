@@ -98,3 +98,24 @@ int stronglyConnectedComponents(int v, vector<vector<int>> &edges)
 
     return count;
 }
+
+int main()
+{
+    // Number of vertices in the graph
+    int v = 5;
+
+    // Edges representation: {u, val} implies a directed edge from u -> val
+    // This forms a graph with 3 SCCs: {0, 1, 2}, {3}, and {4}
+    vector<vector<int>> edges = {
+        {1, 0},
+        {0, 2},
+        {2, 1},
+        {0, 3},
+        {3, 4}};
+
+    int sccCount = stronglyConnectedComponents(v, edges);
+
+    cout << "Total Number of Strongly Connected Components: " << sccCount << endl;
+
+    return 0;
+}
