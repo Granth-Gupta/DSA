@@ -16,6 +16,9 @@
 
 using namespace std;
 
+// TC: O(V + E), where V is the number of vertices and E is the number of edges in the graph
+// SC: O(V), for storing the visited array and the stack
+
 // Helper DFS function to find topological sort-like ordering
 void dfs(int node, unordered_map<int, bool> &vis, stack<int> &st, unordered_map<int, list<int>> &adj)
 {
