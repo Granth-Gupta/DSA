@@ -1,9 +1,11 @@
+// Bellman Ford Algorithm - For Shortest distance b/w two nodes in a graph with negative weights
+// Time Complexity: O(n*m) where n is the number of vertices and m is the number of edges
+
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
-// Function to find the shortest distance using the Bellman-Ford algorithm
 int bellmonFord(int n, int m, int src, int dest, vector<vector<int>> &edges)
 {
     // Initialize distances from src to all other vertices as 1e9 (infinity)
@@ -54,11 +56,9 @@ int bellmonFord(int n, int m, int src, int dest, vector<vector<int>> &edges)
 
 int main()
 {
-    // Number of vertices (n) and edges (m)
     int n = 4;
     int m = 4;
 
-    // Source and Destination nodes
     int src = 1;
     int dest = 4;
 
