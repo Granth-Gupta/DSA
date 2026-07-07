@@ -9,6 +9,7 @@ int main()
     {
     case 1:
         cout << "Monday";
+        // continue;    // Error: continue statement not within a switch statement
         break;
     case 2:
         cout << "Tuesday";
