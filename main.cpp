@@ -2,15 +2,14 @@
 #include <map>
 using namespace std;
 
-int main(){
-    map<int, int> m;
-    m[0] = 1;
+int main()
+{
+    int a, b;
+    a = cin.get();
+    b = cin.get();
 
-    if(m.find(0) == m.end()){
-        cout << "Not found" << endl;
-    } else {
-        cout << "Found" << endl;
-    }
+    cout << "ASCII value of a: " << a << endl;
+    cout << "ASCII value of b: " << b << endl;
 
     return 0;
 }
