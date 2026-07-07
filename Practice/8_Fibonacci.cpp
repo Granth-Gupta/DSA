@@ -1,4 +1,4 @@
-// Using loop - Best Fibonacci implementation
+// Using loop - Much better Fibonacci implementation
 
 #include <iostream>
 using namespace std;
