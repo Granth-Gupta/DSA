@@ -1,5 +1,8 @@
 // To avoid large value output use 10^9 + 7 modulus
 
+// TC: O(n), SC: O(1)
+// Still not good for solving large n, for that we can use matrix exponentiation or Binet's formula
+
 #include <bits/stdc++.h>
 using namespace std;
 
