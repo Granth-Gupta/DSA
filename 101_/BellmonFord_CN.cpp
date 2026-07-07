@@ -29,6 +29,5 @@ vector<int> bellmonFord(int n, int m, int src, vector<vector<int>> &edges)
         }
     }
 
-    // Return the distance of destination.
     return d;
 }
