@@ -13,6 +13,7 @@ int main()
     case 2:
         cout << "Tuesday";
         break;
+    // case 3.4: // Error: case label must not be a float
     case 3:
         cout << "Wednesday";
         break;
@@ -28,6 +29,7 @@ int main()
     case 7:
         cout << "Sunday";
         break;
+    // case "Hello": // Error: case label must not be a string
     default:
         cout << "Invalid day";
     }
