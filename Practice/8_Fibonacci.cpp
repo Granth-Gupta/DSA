@@ -5,12 +5,9 @@ using namespace std;
 
 // TC: O(n), SC: O(1)
 
-int Fibonacci(int n)
+void Fibonacci(int n)
 {
     int a = 0, b = 1, c;
-
-    if (n <= 0)
-        return a;
 
     cout << a << " ";
 
@@ -21,8 +18,6 @@ int Fibonacci(int n)
         a = b;
         b = c;
     }
-
-    return 0;
 }
 
 int main()
