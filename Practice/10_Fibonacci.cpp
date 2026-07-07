@@ -192,6 +192,9 @@ long long fibonacci(long long n)
     if (n == 0)
         return 0;
 
+    if (n == 1)
+        return 1;
+
     Matrix base = {1, 1, 1, 0};
 
     // Compute A^(n-1)
