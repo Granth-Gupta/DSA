@@ -1,6 +1,8 @@
 #include <iostream>
 using namespace std;
 
+// TC: O(2^n), SC: O(n)
+
 int Fibonacci(int n)
 {
     // Base case
