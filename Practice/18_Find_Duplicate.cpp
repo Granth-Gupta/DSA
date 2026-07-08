@@ -1,5 +1,7 @@
 // Find Duplicate if values of arr is in range(1,n-1) - CN
 
+// TC: O(n) SC: O(n)
+
 #include <bits/stdc++.h>
 using namespace std;
 
