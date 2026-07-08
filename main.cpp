@@ -1,23 +1,13 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-int fibonacciNumber(int n)
-{
-    int a = 0, b = 1, ans;
-
-    for (int i = 1; i < n - 1; i++)
-    {
-        ans = a + b;
-        a = b;
-        b = ans;
-    }
-    return ans;
-}
-
 int main()
 {
-    int ans = fibonacciNumber(10);
+    int arr[5] = {1, 2, 3, 4, 5};
+    cout << arr << endl;
+    cout << arr[0] << endl;
+    cout << *arr << endl;
+    cout << sizeof(arr) << endl;
 
-    cout << ans;
     return 0;
 }
