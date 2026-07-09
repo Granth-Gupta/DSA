@@ -44,5 +44,16 @@ int main()
     cout << "First Element Address: " << first << endl;
     cout << "First Element: " << *first << endl;
 
+    vector<int> arr2(5);
+    vector<int> arr3(5, 10);
+
+    cout << "arr2 size: " << arr2.size() << endl;
+    cout << "arr3 size: " << arr3.size() << endl;
+
+    for (int i : arr2)
+    {
+        cout << i << " ";
+    }
+
     return 0;
 }
