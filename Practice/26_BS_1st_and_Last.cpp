@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Upper Bound and Lower Bound Approach -> Backend implementation using Binary Search
+
 pair<int, int> firstAndLastPosition(vector<int> &arr, int n, int k)
 {
     int first = lower_bound(arr.begin(), arr.end(), k) - arr.begin();
