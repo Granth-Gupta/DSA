@@ -3,6 +3,8 @@
 #include <algorithm>
 using namespace std;
 
+// TC: O(nlogn)
+
 bool isPossible(vector<int> &stalls, int mid, int k, int n)
 {
     int countcows = 1;
