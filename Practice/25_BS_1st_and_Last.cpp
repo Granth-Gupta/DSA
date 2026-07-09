@@ -12,26 +12,21 @@ int firstOccurrence(vector<int> &arr, int n, int k)
     {
         int mid = start + (end - start) / 2;
 
-        if (arr[mid] == k)
+        if (arr[mid] >= k)
         {
             end = mid - 1; // Move left to find the first occurrence
         }
-        else if (arr[mid] < k)
+        else
         {
             start = mid + 1;
         }
-        else
-        {
-            end = mid - 1;
-        }
     }
 
-    // Check if the first occurrence is found
     if (start < n && arr[start] == k)
     {
         return start;
     }
-    return -1; // Key not found
+    return -1;
 }
 
 int lastOccurrence(vector<int> &arr, int n, int k)
@@ -43,13 +38,9 @@ int lastOccurrence(vector<int> &arr, int n, int k)
     {
         int mid = start + (end - start) / 2;
 
-        if (arr[mid] == k)
+        if (arr[mid] <= k)
         {
             start = mid + 1; // Move right to find the last occurrence
-        }
-        else if (arr[mid] < k)
-        {
-            start = mid + 1;
         }
         else
         {
@@ -57,12 +48,11 @@ int lastOccurrence(vector<int> &arr, int n, int k)
         }
     }
 
-    // Check if the last occurrence is found
     if (end >= 0 && arr[end] == k)
     {
         return end;
     }
-    return -1; // Key not found
+    return -1;
 }
 
 pair<int, int> firstAndLastPosition(vector<int> &arr, int n, int k)
