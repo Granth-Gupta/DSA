@@ -32,4 +32,17 @@ int main()
     int ans = peakIndexInMountainArray(arr);
 
     cout << "Peak Mountain Array Index: " << ans << endl;
+
+    for (int i : arr)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+
+    auto first = arr.data();
+
+    cout << "First Element Address: " << first << endl;
+    cout << "First Element: " << *first << endl;
+
+    return 0;
 }
