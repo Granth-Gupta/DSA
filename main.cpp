@@ -1,13 +1,35 @@
-#include <bits/stdc++.h>
+// Leetcode 852. Peak Index in a Mountain Array
+
+#include <iostream>
+#include <vector>
 using namespace std;
+
+int peakIndexInMountainArray(vector<int> &arr)
+{
+    int left = 0;
+    int right = arr.size() - 1;
+
+    while (left < right)
+    {
+        int mid = left + (right - left) / 2;
+
+        if (arr[mid] < arr[mid + 1])
+        {
+            left = mid + 1;
+        }
+        else
+        {
+            right = mid;
+        }
+    }
+
+    return left;
+}
 
 int main()
 {
-    int arr[5] = {1, 2, 3, 4, 5};
-    cout << arr << endl;
-    cout << arr[0] << endl;
-    cout << *arr << endl;
-    cout << sizeof(arr) << endl;
+    vector<int> arr = {0, 1, 2, 3, 1, 0};
+    int ans = peakIndexInMountainArray(arr);
 
-    return 0;
+    cout << "Peak Mountain Array Index: " << ans << endl;
 }
