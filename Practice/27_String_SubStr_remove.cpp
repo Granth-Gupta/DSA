@@ -14,6 +14,7 @@ int main()
     string s = "Hello, World!";
     string subStr = "l";
 
+    // Use a while loop to remove all occurrences of the substring from the string.
     while (s.size() > 0 && s.find(subStr) != string::npos)
     {
         s.erase(s.find(subStr), subStr.length());
