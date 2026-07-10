@@ -1,7 +1,7 @@
 // Remove all occurrences of a substring from a string in C++ using the erase() function.
 
 #include <iostream>
-#include <cstring>
+// #include <cstring> -> needed when strlen() / strcmp() / strcpy() / strncmp(), etc are used.
 #include <string>
 using namespace std;
 
