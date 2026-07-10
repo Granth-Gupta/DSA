@@ -1,3 +1,5 @@
+// Remove all occurrences of a substring from a string in C++ using the erase() function.
+
 #include <iostream>
 #include <cstring>
 #include <string>
