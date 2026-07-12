@@ -39,3 +39,29 @@ vector<int> spiralPathMatrix(vector<vector<int>> matrix, int n, int m)
 
     return order;
 }
+
+int main()
+{
+    int n, m;
+    n = 4;
+    m = 4;
+
+    vector<vector<int>> matrix(n, vector<int>(m));
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            matrix[i][j] = i + j;
+        }
+    }
+
+    vector<int> result = spiralPathMatrix(matrix, n, m);
+
+    for (int i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << " ";
+    }
+
+    return 0;
+}
