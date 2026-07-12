@@ -28,4 +28,26 @@ vector<int> wavePrint(vector<vector<int>> arr, int nRows, int mCols)
 
 int main()
 {
+    int nRows, mCols;
+    nRows = 4;
+    mCols = 4;
+
+    vector<vector<int>> arr(nRows, vector<int>(mCols));
+
+    for (int i = 0; i < nRows; i++)
+    {
+        for (int j = 0; j < mCols; j++)
+        {
+            arr[i][j] = i + j;
+        }
+    }
+
+    vector<int> result = wavePrint(arr, nRows, mCols);
+
+    for (int i = 0; i < result.size(); i++)
+    {
+        cout << result[i] << " ";
+    }
+
+    return 0;
 }
