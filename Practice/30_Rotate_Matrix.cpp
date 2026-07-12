@@ -24,3 +24,33 @@ public:
         }
     }
 };
+
+int main()
+{
+    int n = 4;
+    int m = 4;
+
+    vector<vector<int>> matrix(n, vector<int>(m));
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            matrix[i][j] = i + j;
+        }
+    }
+
+    Solution sol;
+    sol.rotate(matrix);
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
