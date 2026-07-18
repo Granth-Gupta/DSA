@@ -29,6 +29,7 @@ bool searchMatrix(vector<vector<int>> &matrix, int target)
         }
 
         mid = s + (e - s) / 2;
+        
     }
 
     return false;
