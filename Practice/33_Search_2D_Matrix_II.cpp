@@ -62,6 +62,5 @@ int main()
     {
         cout << "Target " << target << " not found in the matrix." << endl;
     }
-
     return 0;
 }
