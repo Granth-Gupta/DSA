@@ -27,10 +27,8 @@ bool searchMatrix(vector<vector<int>> &matrix, int target)
         {
             e = mid - 1;
         }
-
         mid = s + (e - s) / 2;
     }
-
     return false;
 }
 
