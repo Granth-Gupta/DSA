@@ -20,19 +20,12 @@ int fibonacci(int n, vector<int> &dp)
 
 int main()
 {
-    int n = 5;
+    int n;
+    cin >> n;
 
     vector<int> dp(n + 1, -1);
 
-    fibonacci(n, dp);
-
-    dp[0] = 0;
-    dp[1] = 1;
-
-    for (int i = 0; i <= n; i++)
-    {
-        cout << "F(" << i << ") = " << dp[i] << endl;
-    }
+    cout << fibonacci(n, dp);
 
     return 0;
 }
