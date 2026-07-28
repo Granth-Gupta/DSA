@@ -1,6 +1,7 @@
 // Minimum elements - CN (Simple Recursion)
-// TC = O(2^n) SC = O(n) (Recursion Stack Space)
+// TC = O(2^n)
 // SC = O(n) (Recursion Stack Space)
+// TLE may occur due to lack of memoization, as the same subproblems are solved multiple times.
 
 #include <bits/stdc++.h>
 using namespace std;
