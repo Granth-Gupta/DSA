@@ -1,3 +1,9 @@
+// Count ways to reach nth stair when you can take 1 or 2 steps at a time (with no DP approach).
+// TLE may occur for large nStairs values as no memoization is used in this approach.
+
+// TC: O(2^n) where n is the number of stairs
+// SC: O(n) for recursion stack
+
 #include <bits/stdc++.h>
 using namespace std;
 
