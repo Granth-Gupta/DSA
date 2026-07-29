@@ -1,6 +1,6 @@
 // Minimum elements - CN (Top Down Approach with Memoization)
-// TC = O(n)
-// SC = O(n) (Recursion Stack Space)
+// TC = O(n*x) where n is the size of the num array and x is the target sum
+// SC = O(x) for the memoization array and O(x) for the recursion stack space
 
 #include <bits/stdc++.h>
 using namespace std;

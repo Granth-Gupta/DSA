@@ -1,4 +1,6 @@
 // Minimum elements - CN (Bottom Up Approach with Tabulation)
+// TC = O(n*x) where n is the size of the num array and x is the target sum
+// SC = O(x) for the dp array
 
 #include <bits/stdc++.h>
 using namespace std;
