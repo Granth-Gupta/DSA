@@ -21,7 +21,7 @@ int solve(vector<int> &nums, int n)
 int maximumNonAdjacentSum(vector<int> &nums)
 {
     int n = nums.size();
-    int ans = solve(nums, n);
+    int ans = solve(nums, n - 1);
     return ans;
 }
 
