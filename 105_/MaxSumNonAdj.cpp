@@ -24,3 +24,11 @@ int maximumNonAdjacentSum(vector<int> &nums)
     int ans = solve(nums, n);
     return ans;
 }
+
+int main()
+{
+    vector<int> nums = {2, 1, 4, 9};
+    cout << maximumNonAdjacentSum(nums) << endl;
+
+    return 0;
+}
