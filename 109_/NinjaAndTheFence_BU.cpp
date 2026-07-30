@@ -1,4 +1,5 @@
 // Ninja and the Fence - CN (Approach 3: Bottom-Up DP)
+// TC: O(n) SC: O(n) (dp array)
 
 #include <bits/stdc++.h>
 using namespace std;
