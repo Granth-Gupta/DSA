@@ -1,4 +1,5 @@
 // Ninja and the Fence - CN (Approach 2: Recursion + Memoization)
+// TC: O(n) SC: O(n) (Recursion stack space + dp array)
 
 #include <bits/stdc++.h>
 using namespace std;
