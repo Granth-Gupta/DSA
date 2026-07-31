@@ -2,6 +2,8 @@
 // TC: O(n*target)
 // SC: O(target)
 
+// Space optimized version of the above code is not possible.
+
 #include <bits/stdc++.h>
 using namespace std;
 
