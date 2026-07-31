@@ -1,6 +1,6 @@
 // 0/1 Knapsack Problem using Bottom Up + Space Optimization Dynamic Programming approach
 // TC : O(n*W) where n is the number of items and W is the maximum weight of the knapsack
-// SC : O(W) for dp array
+// SC : O(2W) ~ O(w) for prev and curr arrays
 
 #include <bits/stdc++.h>
 using namespace std;
