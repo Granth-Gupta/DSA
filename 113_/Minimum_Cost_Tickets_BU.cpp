@@ -9,6 +9,9 @@ int solve(int n, vector<int> &days, vector<int> &cost)
     vector<int> dp(n + 1, INT_MAX);
     dp[n] = 0;
 
+    // Note that we are iterating from the last day to the first day
+    // If we to iterate from the first day to the last day, we will be required future values which are not yet computed
+
     for (int k = n - 1; k >= 0; k--)
     {
         int option1 = cost[0] + dp[k + 1];
