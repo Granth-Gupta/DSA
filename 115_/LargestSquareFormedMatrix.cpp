@@ -1,4 +1,5 @@
 // Largest square formed in a matrix - CN (Approach: Simple Recursion)
+// TC: O(3^(n*m))  SC: O(n*m) (for recursion stack space)
 
 #include <bits/stdc++.h>
 using namespace std;
