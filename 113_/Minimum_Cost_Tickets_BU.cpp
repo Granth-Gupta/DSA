@@ -1,34 +1,39 @@
-// Ninja's Training - Approach 4: Space optimization using queue (sliding window technique)
-// TC: O(n)
-// SC: O(7 + 30) = O(1)
+// Ninja's Training - Approach 3: Bottom-Up DP
+// TC: O(n) SC: O(n)
 
 #include <bits/stdc++.h>
 using namespace std;
 
+int solve(int n, vector<int> &days, vector<int> &cost)
+{
+    vector<int> dp(n + 1, INT_MAX);
+    dp[n] = 0;
+
+    // Note that we are iterating from the last day to the first day
+    // If we to iterate from the first day to the last day, we will be required future values which are not yet computed
+
+    for (int k = n - 1; k >= 0; k--)
+    {
+        int option1 = cost[0] + dp[k + 1];
+
+        int i;
+        for (i = k; i < n && days[i] < days[k] + 7; i++)
+            ;
+        int option2 = cost[1] + dp[i];
+
+        for (i = k; i < n && days[i] < days[k] + 30; i++)
+            ;
+        int option3 = cost[2] + dp[i];
+
+        dp[k] = min(option1, min(option2, option3));
+    }
+
+    return dp[0];
+}
+
 int minimumCoins(int n, vector<int> days, vector<int> cost)
 {
-    int ans = 0;
-
-    queue<pair<int, int>> month;
-    queue<pair<int, int>> week;
-
-    for (int day : days)
-    {
-
-        // step 1: remove expired days
-        while (!month.empty() && month.front().first + 30 <= day)
-            month.pop();
-        while (!week.empty() && week.front().first + 7 <= day)
-            week.pop();
-
-        // step 2: add cost for current day
-        month.push(make_pair(day, ans + cost[2]));
-        week.push(make_pair(day, ans + cost[1]));
-
-        // step 3: ans update
-        ans = min(ans + cost[0], min(month.front().second, week.front().second));
-    }
-    return ans;
+    return solve(n, days, cost);
 }
 
 int main()
