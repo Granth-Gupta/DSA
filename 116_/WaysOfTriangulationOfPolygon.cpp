@@ -1,6 +1,6 @@
 // Number of ways of Triangulation for a Polygon - using catalan number
 // Catalan Number : 1 1 2 5 14 42 132 429 1430 4862 ...
-// TC: O(n^2)  SC: O(n)
+// TC: O(n), SC: O(1)
 
 // Cn ​= (2n)!/(n+1)!n! {Formula for Catalan Number}
 
