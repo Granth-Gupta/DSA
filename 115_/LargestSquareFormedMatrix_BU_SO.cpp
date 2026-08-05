@@ -1,7 +1,7 @@
 // Largest Square Formed in Matrix - Approach 4: Bottom Up DP + Space Optimization
 // TC: O(n*m)  SC: O(m)
 
-// Note SC can be O(n). The choice of implementation can affect the space complexity.
+// Note: SC can be O(n). The choice of implementation can affect the space complexity.
 
 #include <bits/stdc++.h>
 using namespace std;
