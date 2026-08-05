@@ -1,6 +1,5 @@
 // Ninja's Training - Approach 2: Recursion + Memoization
 // TC: O(n) SC: O(n) + O(n)
-// TC: O(1) as max value of n is 365.
 
 #include <bits/stdc++.h>
 using namespace std;
