@@ -1,34 +1,34 @@
-// Dice Throw Problem - GFG (Approach: Bottom-Up Dynamic Programming)
-// TC: O(n * x * m) SC: O(n * x)
+// Dice Throw Problem - GFG (Approach: Recursion with Memoization)
+// TC: O(n * x * m) SC: O(n * x) + O(n)
 
 #include <bits/stdc++.h>
 using namespace std;
 
 class Solution
 {
-    int solve(int m, int n, int x)
+    int solve(int faces, int dice, int target, vector<vector<int>> &dp)
     {
-        vector<vector<int>> dp(n + 1, vector<int>(x + 1, 0));
+        if (target < 0 || (target != 0 && dice == 0) || (target == 0 && dice != 0))
+            return 0;
+        if (target == 0 && dice == 0)
+            return 1;
+        if (dp[dice][target] != -1)
+            return dp[dice][target];
 
-        dp[0][0] = 1;
-
-        for (int i = 1; i <= n; i++)
+        int ans = 0;
+        for (int i = 1; i <= faces; i++)
         {
-            for (int j = 1; j <= x; j++)
-            {
-                for (int k = 1; k <= m && j - k >= 0; k++)
-                {
-                    dp[i][j] += dp[i - 1][j - k];
-                }
-            }
+            ans = ans + solve(faces, dice - 1, target - i, dp);
         }
-        return dp[n][x];
+        dp[dice][target] = ans;
+        return dp[dice][target];
     }
 
 public:
     int noOfWays(int m, int n, int x)
     {
-        return solve(m, n, x);
+        vector<vector<int>> dp(n + 1, vector<int>(x + 1, -1));
+        return solve(m, n, x, dp);
     }
 };
 
