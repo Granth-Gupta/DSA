@@ -23,7 +23,7 @@ class Solution
                 dp1[index][n] = max(incl, excl);
             }
         }
-        int FirstTake = dp1[1][k / 3];
+        int FirstNotTake = dp1[1][k / 3];
 
         for (int index = k - 2; index >= 0; index--)
         {
@@ -35,7 +35,7 @@ class Solution
                 dp2[index][n] = max(incl, excl);
             }
         }
-        int FirstNotTake = dp2[0][k / 3];
+        int FirstTake = dp2[0][k / 3];
 
         return max(FirstTake, FirstNotTake);
     }
