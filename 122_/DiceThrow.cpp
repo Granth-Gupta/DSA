@@ -1,4 +1,4 @@
-// Dice Throw Problem - GFG - TLE
+// Dice Throw Problem - GFG (Approach: Simple Recursion) - TLE
 // TC: O(m^n) SC: O(n)
 
 #include <bits/stdc++.h>
