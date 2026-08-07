@@ -1,5 +1,5 @@
 // Partion Equal Subset Sum - Leetcode 416 (Approach 3: Bottom Up DP)
-// TC: O(n^2) , SC: O(n^2)
+// TC: O(sum/2 * n) , SC: O(sum/2)
 
 #include <bits/stdc++.h>
 using namespace std;
