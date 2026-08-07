@@ -16,10 +16,12 @@ class Solution
         {
             for (int j = 1; j <= x; j++)
             {
+                int ans = 0;
                 for (int k = 1; k <= m && j - k >= 0; k++)
                 {
-                    dp[i][j] += dp[i - 1][j - k];
+                    ans += dp[i - 1][j - k];
                 }
+                dp[i][j] = ans;
             }
         }
         return dp[n][x];
