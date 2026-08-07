@@ -10,8 +10,10 @@ class Solution
     {
         int n = nums1.size();
 
-        vector<int> next(2, 0);
-        vector<int> curr(2, 0);
+        int swap_ = 0;
+        int noSwap = 0;
+        int currSwap = 0;
+        int currNoSwap = 0;
 
         for (int index = n - 1; index > 0; index--)
         {
@@ -26,16 +28,20 @@ class Solution
                     swap(prev1, prev2);
 
                 if (nums1[index] > prev1 && nums2[index] > prev2)
-                    ans = next[0];
+                    ans = noSwap;
 
                 if (nums1[index] > prev2 && nums2[index] > prev1)
-                    ans = min(ans, 1 + next[1]);
+                    ans = min(ans, 1 + swap_);
 
-                curr[swapped] = ans;
+                if (swapped)
+                    currSwap = ans;
+                else
+                    currNoSwap = ans;
             }
-            next = curr;
+            swap_ = currSwap;
+            noSwap = currNoSwap;
         }
-        return next[0];
+        return min(swap_, noSwap);
     }
 
 public:
