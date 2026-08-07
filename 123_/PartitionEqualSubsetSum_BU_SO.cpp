@@ -8,10 +8,11 @@ class Solution
 {
     bool solve(vector<int> &nums, int t, int n)
     {
-        vector<vector<int>> dp(n + 1, vector<int>(t + 1, 0));
+        vector<int> next(t + 1, 0);
+        vector<int> curr(t + 1, 0);
 
-        for (int i = 0; i <= n; i++)
-            dp[i][0] = 1;
+        next[0] = 1;
+        curr[0] = 1;
 
         for (int index = n - 1; index >= 0; index--)
         {
@@ -19,14 +20,15 @@ class Solution
             {
                 bool incl = false;
                 if (target - nums[index] >= 0)
-                    incl = dp[index + 1][target - nums[index]];
+                    incl = next[target - nums[index]];
 
-                bool excl = dp[index + 1][target];
+                bool excl = next[target];
 
-                dp[index][target] = incl or excl;
+                curr[target] = incl or excl;
             }
+            next = curr;
         }
-        return dp[0][t];
+        return next[t];
     }
 
 public:
