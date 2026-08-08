@@ -1,5 +1,5 @@
 // Longest Arithmetic Subsequence - GFG - Approach: Top Down DP with Memoization (DP + Hashing - Top Down Approach) - TLE
-// TC: O(n^2 * d) SC: O(n^2 * d) where d is the number of distinct differences
+// TC: O(n^2) SC: O(n^2)
 
 #include <bits/stdc++.h>
 using namespace std;
