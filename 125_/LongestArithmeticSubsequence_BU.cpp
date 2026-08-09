@@ -1,6 +1,8 @@
 // Longest Arithmetic Subsequence - GFG - Approach: Bottom Up DP with Hashing (DP + Hashing - Bottom Up Approach) - AC
 // TC: O(n^2) SC: O(n^2)
 
+// Note: This Bottom up is not created by changing the top down approach, it is created from scratch.
+
 #include <bits/stdc++.h>
 using namespace std;
 
