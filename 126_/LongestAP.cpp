@@ -12,16 +12,12 @@ public:
         unordered_map<int, int> dp;
         int ans = 0;
 
-        for (int i = 0; i < arr.size(); i++)
+        for (int num : arr)
         {
-            int temp = arr[i] - diff;
-            int tempAns = 0;
-
-            if (dp.count(temp))
-                tempAns = dp[temp];
-
-            dp[arr[i]] = 1 + tempAns;
-            ans = max(ans, dp[arr[i]]);
+            // If num - diff exists, dp[num - diff] returns its value.
+            // If it doesn't exist, accessing it or using .find() defaults to 0.
+            dp[num] = dp[num - diff] + 1;
+            ans = max(ans, dp[num]);
         }
         return ans;
     }
