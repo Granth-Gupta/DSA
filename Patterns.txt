@@ -4,3 +4,6 @@
 
 TC and SC - https://www.naukri.com/code360/guided-paths/competitive-programming/content/126222/offering/1476042
 OOPS - https://whimsical.com/object-oriented-programming-cheatsheet-by-love-babbar-YbSgLatbWQ4R5paV7EgqFw
+
+patterns - 
+https://bytebytego.com/courses/coding-patterns/two-pointers/introduction-to-two-pointers
