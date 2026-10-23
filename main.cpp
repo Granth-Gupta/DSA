@@ -1,15 +1,23 @@
 #include <iostream>
+#include <climits>
 using namespace std;
 
 int main()
 {
-    int a = 3;
+    int a = 1;
 
-    if (true)
+    switch (a)
     {
-        int a = 5;
-        cout << "Inner a: " << a << endl; // This will print 5
+    case 1:
+        cout << "Case 1" << endl;
+        break;
+    case 2:
+        cout << "Case 2" << endl;
+        break;
+    default:
+        cout << "Default case" << endl;
+        break;
     }
 
-    cout << "Outer a: " << a << endl; // This will print 3
+    return 0;
 }
