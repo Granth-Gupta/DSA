@@ -1,22 +1,42 @@
 #include <iostream>
 #include <climits>
+#include <array>
 using namespace std;
+
+bool linear_search(int arr[], int size, int target)
+{
+    for (int i = 0; i < size; i++)
+    {
+        if (arr[i] == target)
+        {
+            cout << "Element found at index: " << i << endl;
+            return true;
+        }
+    }
+    cout << "Element not found" << endl;
+    return false;
+}
 
 int main()
 {
-    int a = 1;
+    int arr[11] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
-    switch (a)
+    int s = 0;
+    int e = sizeof(arr) / sizeof(int) - 1;
+
+    while (s < e)
     {
-    case 1:
-        cout << "Case 1" << endl;
-        break;
-    case 2:
-        cout << "Case 2" << endl;
-        break;
-    default:
-        cout << "Default case" << endl;
-        break;
+        int temp = arr[s];
+        arr[s] = arr[e];
+        arr[e] = temp;
+
+        s = s + 1;
+        e = e - 1;
+    }
+
+    for (int i = 0; i < sizeof(arr) / sizeof(int); i++)
+    {
+        cout << arr[i] << " ";
     }
 
     return 0;
