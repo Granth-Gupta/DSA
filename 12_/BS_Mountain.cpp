@@ -4,25 +4,30 @@
 #include <vector>
 using namespace std;
 
-int peakIndexInMountainArray(vector<int>& arr) {
+int peakIndexInMountainArray(vector<int> &arr)
+{
     int e = arr.size() - 1;
     int s = 0;
 
-    int mid = s + (e-s)/2;
+    int mid = s + (e - s) / 2;
 
-    while(s < e){
-        if(arr[mid] < arr[mid + 1]){
+    while (s < e)
+    {
+        if (arr[mid] < arr[mid + 1])
+        {
             s = mid + 1;
         }
-        else{
+        else
+        {
             e = mid;
         }
-        mid = s + (e-s)/2;
+        mid = s + (e - s) / 2;
     }
     return s;
 }
 
-int main(){
+int main()
+{
     vector<int> arr = {0, 1, 2, 1, 0};
     int ans = peakIndexInMountainArray(arr);
 
