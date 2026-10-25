@@ -1,3 +1,8 @@
+#include <vector>
+#include <algorithm>
+
+using namespace std;
+
 class Solution
 {
     int findIndex(vector<int> &nums, int val, int pos)
