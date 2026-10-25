@@ -3,15 +3,31 @@ class Solution
 public:
     vector<int> intersection(vector<int> &nums1, vector<int> &nums2)
     {
-        unordered_set<int> set1(nums1.begin(), nums1.end());
+        sort(nums1.begin(), nums1.end());
+        sort(nums2.begin(), nums2.end());
+
+        int i = 0, j = 0;
         vector<int> ans;
 
-        for (int x : nums2)
+        while (i < nums1.size() && j < nums2.size())
         {
-            if (set1.count(x))
+            if (nums1[i] < nums2[j])
             {
-                ans.push_back(x);
-                set1.erase(x); // Prevents duplicates in ans and speeds up future checks
+                i++;
+            }
+            else if (nums1[i] > nums2[j])
+            {
+                j++;
+            }
+            else
+            {
+                // Add unique elements only
+                if (ans.empty() || ans.back() != nums1[i])
+                {
+                    ans.push_back(nums1[i]);
+                }
+                i++;
+                j++;
             }
         }
         return ans;
