@@ -1,21 +1,20 @@
 class Solution
 {
 public:
-    int findDuplicate(vector<int> &arr)
+    vector<int> intersection(vector<int> &nums1, vector<int> &nums2)
     {
-        map<int, int> m;
-        for (int i = 0; i < arr.size(); i++)
-        {
-            m[arr[i]]++;
-        }
+        set<int> s1(nums1.begin(), nums1.end());
+        set<int> s2(nums2.begin(), nums2.end());
 
-        for (int j = 0; j < arr.size(); j++)
+        vector<int> ans;
+
+        for (int x : s1)
         {
-            if (m[arr[j]] != 1)
+            if (s2.count(x))
             {
-                return arr[j];
+                ans.push_back(x);
             }
         }
-        return 0;
+        return ans;
     }
 };
