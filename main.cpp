@@ -44,9 +44,12 @@ int BookAllocation(int arr[], int n, int m)
     vector<int> allocation;
     int mid = s + (e - s) / 2;
 
+    cout << "Initial search space: s = " << s << ", e = " << e << endl;
+
     while (s <= e)
     {
         int pageSum = isPossible(arr, n, m, mid);
+        cout << "Page sum for mid " << mid << ": " << pageSum << endl;
         if (pageSum != -1)
         {
             allocation.push_back(mid);
