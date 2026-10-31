@@ -1,39 +1,78 @@
 #include <iostream>
+#include <algorithm>
+#include <vector>
 using namespace std;
 
-int sqrt(int n)
+int isPossible(int arr[], int n, int m, int mid)
 {
-    int s = 0;
-    int e = n;
-    int mid = s + (e - s) / 2;
-    int ans = -1;
+    int studentCount = 1;
+    int pageSum = 0;
 
-    while (s < e)
+    for (int i = 0; i < n; i++)
     {
-        if (mid * mid == n)
+        if (pageSum + arr[i] > mid)
         {
-            return mid;
-        }
-        else if (mid * mid < n)
-        {
-            ans = mid;
-            s = mid + 1;
+            studentCount++;
+            pageSum = arr[i];
+
+            if (studentCount > m)
+                return -1;
         }
         else
         {
+            pageSum += arr[i];
+        }
+    }
+
+    return pageSum;
+}
+
+int BookAllocation(int arr[], int n, int m)
+{
+    if (m > n)
+        return -1;
+
+    sort(arr, arr + n);
+
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+        sum += arr[i];
+
+    int s = arr[n - 1];
+    int e = sum;
+    int result = -1;
+    vector<int> allocation;
+    int mid = s + (e - s) / 2;
+
+    while (s <= e)
+    {
+        int pageSum = isPossible(arr, n, m, mid);
+        if (pageSum != -1)
+        {
+            allocation.push_back(mid);
             e = mid - 1;
         }
+        else
+        {
+            s = mid + 1;
+        }
+
         mid = s + (e - s) / 2;
     }
 
-    return ans;
+    sort(allocation.begin(), allocation.end());
+    result = allocation[0];
+
+    return result;
 }
 
 int main()
 {
-    int n = 36;
-    int ans = sqrt(n);
-    cout << ans;
+    int arr[4] = {10, 20, 30, 40};
+    int n = 2;
+
+    int result = BookAllocation(arr, 4, n);
+    cout << "Minimum number of pages allocated: " << result << endl;
 
     return 0;
 }
